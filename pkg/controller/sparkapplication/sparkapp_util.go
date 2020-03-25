@@ -18,7 +18,6 @@ package sparkapplication
 
 import (
 	"fmt"
-	"strings"
 
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/kubernetes/pkg/apis/policy"
@@ -72,12 +71,10 @@ func getResourceLabels(app *v1beta2.SparkApplication) map[string]string {
 	return labels
 }
 
-func getResourceAnnotations(ingressAnnotations string) map[string]string {
+func getResourceForceSSL(ingressForceSSL bool) map[string]string {
 	annotations := map[string]string{}
-	for _, annotation := range strings.Split(ingressAnnotations, ",") {
-		if strings.Count(annotation, ":") == 1 {
-			annotations[strings.Split(annotation, ":")[0]] = strings.Split(annotation, ":")[1]
-		}
+	if ingressForceSSL {
+		annotations["nginx.ingress.kubernetes.io/force-ssl-redirect"] = "true"
 	}
 	return annotations
 }
