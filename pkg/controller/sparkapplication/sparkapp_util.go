@@ -76,10 +76,8 @@ func getResourceAnnotations(app *v1beta2.SparkApplication) map[string]string {
 
 	if app.Spec.SparkConf["spark.ui.ingress.class"] == "nginx" {
 		annotations["kubernetes.io/ingressclass"] = "nginx"
-		if app.Spec.SparkConf["spark.ssl.ui.enabled"] == "true" {
-			if app.Spec.SparkConf["spark.ui.ingress.class"] == "nginx" {
-				annotations["nginx.ingress.kubernetes.io/force-ssl-redirect"] = "true"
-			}
+		if app.Spec.SparkConf["spark.ssl.ui.enabled"] == "true" && app.Spec.SparkConf["spark.ui.ingress.forcessl"] == "true" {
+			annotations["nginx.ingress.kubernetes.io/force-ssl-redirect"] = "true"
 		}
 	}
 

@@ -57,7 +57,7 @@ type SparkIngress struct {
 	ingressURL  string
 }
 
-func createSparkUIIngress(app *v1beta2.SparkApplication, service SparkService, ingressURLFormat string, ingressForceSSL bool, kubeClient clientset.Interface) (*SparkIngress, error) {
+func createSparkUIIngress(app *v1beta2.SparkApplication, service SparkService, ingressURLFormat string, kubeClient clientset.Interface) (*SparkIngress, error) {
 	ingressURL := getSparkUIingressURL(ingressURLFormat, app.GetName())
 	ingress := extensions.Ingress{
 		ObjectMeta: metav1.ObjectMeta{
