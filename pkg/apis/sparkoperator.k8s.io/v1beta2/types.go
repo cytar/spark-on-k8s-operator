@@ -42,6 +42,13 @@ const (
 	InClusterClientMode DeployMode = "in-cluster-client"
 )
 
+// Specific SparkUI config parameters
+type UIConfig struct {
+	IngressClass *string `json:"ingressClass,omitempty"`
+	EnableSSL    bool    `json:"enableSSL,omitempty"`
+	ForceSSL     bool    `json:"forceSSL,omitempty"`
+}
+
 // RestartPolicy is the policy of if and in which conditions the controller should restart a terminated application.
 // This completely defines actions to be taken on any kind of Failures during an application run.
 type RestartPolicy struct {
@@ -273,6 +280,8 @@ type SparkApplicationSpec struct {
 	// BatchSchedulerOptions provides fine-grained control on how to batch scheduling.
 	// +optional
 	BatchSchedulerOptions *BatchSchedulerConfiguration `json:"batchSchedulerOptions,omitempty"`
+	// Define specific sparkUI config parameters like classs used for ingress creation
+	UIConfig *UIConfig `json:"uiConfig,omitempty"`
 }
 
 // BatchSchedulerConfiguration used to configure how to batch scheduling Spark Application
