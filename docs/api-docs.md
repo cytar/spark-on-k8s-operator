@@ -401,6 +401,19 @@ The controller will add environment variable HADOOP_CONF_DIR to the path where t
 
 <tr>
 <td>
+<code>uiConfig</code></br>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>UI related config options. For example,setting ingressClass: "nginx" will add a specific Ingress annotation</p>
+</td>
+</tr>
+
+<tr>
+<td>
 <code>driver</code></br>
 <em>
 <a href="#sparkoperator.k8s.io/v1beta2.DriverSpec">
