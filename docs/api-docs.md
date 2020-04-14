@@ -386,18 +386,6 @@ The controller will add environment variable HADOOP_CONF_DIR to the path where t
 </tr>
 <tr>
 <td>
-<code>uiConfig</code></br>
-<em>
-map[string]string
-</em>
-</td>
-<td>
-<em>(Optional)</em>
-<p>UI related config options. For example,setting ingressClass: "nginx" will add a specific Ingress annotation</p>
-</td>
-</tr>
-<tr>
-<td>
 <code>volumes</code></br>
 <em>
 <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#volume-v1-core">
@@ -408,6 +396,18 @@ map[string]string
 <td>
 <em>(Optional)</em>
 <p>Volumes is the list of Kubernetes volumes that can be mounted by the driver and/or executors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>uiConfig</code></br>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>UI related config options. For example,setting ingressClass: "nginx" will add a specific Ingress annotation</p>
 </td>
 </tr>
 <tr>
